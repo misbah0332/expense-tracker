@@ -2,13 +2,13 @@
 
 ## Development Phases
 
-1. **Project Setup:** Create the project structure, configure the environment and initialize Git.
-2. **Database:** Set up PostgreSQL and implement database connectivity.
-3. **Backend API:** Develop and test expense CRUD endpoints.
-4. **Authentication & Security:** Implement secure login, password hashing and API access protection.
-5. **Frontend:** Build the Streamlit interface and connect it to the backend.
-6. **Testing:** Verify functionality, validation, authentication and error handling.
-7. **Documentation & Deployment:** Document setup instructions and prepare for deployment.
+1. **Project Setup:** Complete. The project structure, environment, and Git repository are in place.
+2. **Database:** Complete. PostgreSQL, connectivity, and the versioned schema are in place.
+3. **Backend API:** Complete. Expense and category endpoints support create, view, update, and delete.
+4. **Authentication & Security:** Complete. Login, password hashing, and protected API access are in place.
+5. **Frontend:** Complete. The Streamlit interface is connected to the backend.
+6. **Testing:** Complete. Automated tests cover functionality, validation, authentication, and error handling.
+7. **Documentation & Deployment:** Setup instructions are documented in `README.md`. Deployment preparation remains open.
 
 ## Working Approach
 - Build incrementally, one feature at a time.
