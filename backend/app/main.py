@@ -1,9 +1,11 @@
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
 
+from app.api.auth import router as auth_router
 from app.api.categories import router as categories_router
 from app.api.expenses import router as expenses_router
 from app.services.exceptions import (
+    AuthenticationError,
     ConflictError,
     DateRangeError,
     InvalidCategoryError,
@@ -11,6 +13,7 @@ from app.services.exceptions import (
 )
 
 app = FastAPI(title="Expense Tracker")
+app.include_router(auth_router)
 app.include_router(categories_router)
 app.include_router(expenses_router)
 
@@ -35,3 +38,14 @@ def handle_invalid_category(
 @app.exception_handler(DateRangeError)
 def handle_date_range(_request: Request, exc: DateRangeError) -> JSONResponse:
     return JSONResponse(status_code=422, content={"detail": str(exc)})
+
+
+@app.exception_handler(AuthenticationError)
+def handle_authentication(
+    _request: Request, exc: AuthenticationError
+) -> JSONResponse:
+    return JSONResponse(
+        status_code=401,
+        content={"detail": str(exc)},
+        headers={"WWW-Authenticate": "Bearer"},
+    )

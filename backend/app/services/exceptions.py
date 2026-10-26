@@ -12,3 +12,7 @@ class InvalidCategoryError(Exception):
 
 class DateRangeError(Exception):
     pass
+
+
+class AuthenticationError(Exception):
+    pass

@@ -3,11 +3,16 @@ from datetime import date
 from fastapi import APIRouter, Depends, Response
 from sqlalchemy.orm import Session
 
+from app.api.deps import require_user
 from app.db.session import get_db
 from app.schemas.expense import ExpenseRead, ExpenseSummary, ExpenseWrite
 from app.services import expenses as expense_service
 
-router = APIRouter(prefix="/expenses", tags=["expenses"])
+router = APIRouter(
+    prefix="/expenses",
+    tags=["expenses"],
+    dependencies=[Depends(require_user)],
+)
 
 
 @router.get("", response_model=list[ExpenseRead])
